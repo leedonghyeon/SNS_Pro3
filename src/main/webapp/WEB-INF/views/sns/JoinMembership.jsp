@@ -102,6 +102,7 @@
         		return false; //submit 진행 차단
         	} else {
         		// 모든조건이 충족되면 true반환
+        		document.form2.action = 'insert';
         		document.form2.submit();
         	}
         }
@@ -115,19 +116,33 @@
         		document.getElementById('checkValue').innerHTML ="";
         	}
         }
+        function CheckID(){
+        	document.form2.action = 'CheckID';
+        	document.form2.submit();
+        }
+
+	   window.onload = function(){
+ 	   var msg = '${msg2}';
+ 	   
+ 	       if ( msg != '')	{   
+ 		   alert('${msg2}');
+ 	       document.form2.member_id.value = '${joinmember.member_id}';
+ 	       }
+   		 }
+
         </script>
         
 </head>
 <body>
-		<form name="form1" method="post" action="Intro">
+		
+		<h1>가입하기</h1><br>  
 
-		<h1>가입하기</h1><br>
-
-		</form>        
-
-        <form name="form2" method="post" action="insert" >
+        <form name="form2" method="post" >
            <input type = "text" id = "name" value = "이름" name="member_name" onfocus="clearText(this)"><br>
            <input type = "text" id = "id" value = "이메일" name="member_id" onfocus="clearText(this)" onkeyup="CheckEmail()"><br>
+			
+     	   <input type ="button" id = "checkid" value = "중복검사" onclick="CheckID()">
+   
            <div id="checkId"></div>
            <input type = "password" id = "password" value = "비밀번호" name="member_password" onfocus="clearText(this)" onkeyup="CheckPassword()">
            <div id="checkPwd"></div>
@@ -144,9 +159,9 @@
 	       <input type = "text" id = "password_a" name="password_a" value = "비밀번호답변" onfocus="clearText(this)"><br>
 	       
            <select name="member_birth_y">
-	         <option value="">연도 </option>
+	          <option value="">연도 </option>
 		         <c:forEach var="member_birth" begin="1980" end="2016" step="1">
-		        	 <option value=${member_birth}>${member_birth}</option>
+		            <option value=${member_birth}>${member_birth}</option>
 		         </c:forEach>
 	       </select>  
 	       
@@ -158,7 +173,7 @@
 	       </select>
 	       
 	       <select name="member_birth_d">
-	         <option value="">일 </option>
+	          <option value="">일 </option>
 		         <c:forEach var="member_birth" begin="1" end="31" step="1">
 		    		<option value=${member_birth}>${member_birth}</option>
 	          	 </c:forEach>

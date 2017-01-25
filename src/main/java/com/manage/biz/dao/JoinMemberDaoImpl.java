@@ -41,5 +41,8 @@ public class JoinMemberDaoImpl implements JoinMemberDao{
 		sqlSession.update("JoinMemberDao.UpdatePassword", joinmember);
 	}
 	
-
+	public int CheckID(JoinMember joinmember) throws Exception{
+		int m_id = sqlSession.selectOne("JoinMemberDao.selectCheckID", joinmember);
+		return m_id;
+	}
 } 

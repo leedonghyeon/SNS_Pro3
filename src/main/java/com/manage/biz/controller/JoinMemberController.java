@@ -56,6 +56,25 @@ public class JoinMemberController {
 			return "sns/FindPassword";	
 		}
 	}
+
+	
+	@RequestMapping("/CheckID")
+	public String CheckID(JoinMember joinmember, Model model) throws Exception {
+
+		int rtn1=joinmemberService.CheckID(joinmember);
+		
+		if(rtn1==0)
+		{
+		model.addAttribute("joinmember", joinmember);
+		model.addAttribute("msg2", "가능한 아이디입니다");
+		return "sns/JoinMembership"; //views->sns->Findpassword.jsp
+		}
+		else
+		{	
+			model.addAttribute("msg3", "중복입니다.");
+			return "sns/CheckID";	
+		}
+	}
 	//
 	@RequestMapping("/updatepassword") //비밀번호 수정
 	public String UpdatePassword(JoinMember joinmember, Model model) throws Exception {

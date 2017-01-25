@@ -33,5 +33,11 @@ public class JoinMemberServiceImpl implements JoinMemberService{
     public void updatePassword(JoinMember joinmember) throws Exception{
     	joinmemberDao.updatePassword(joinmember);
     }
+   
+    public int CheckID(JoinMember joinmember)throws Exception{
+    	
+    	int m_id = joinmemberDao.CheckID(joinmember);
+    	return m_id;
+    }
 
 }

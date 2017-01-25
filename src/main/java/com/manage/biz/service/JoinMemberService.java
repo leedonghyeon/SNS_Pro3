@@ -8,4 +8,5 @@ public interface JoinMemberService {
 	JoinMember findByUserIdAndPassword(String userId, String password) throws Exception;	
 	int findPassword(JoinMember joinmember) throws Exception;
 	void updatePassword(JoinMember joinmember) throws Exception;
+	int CheckID(JoinMember joinmember) throws Exception; 
 }
